@@ -1,0 +1,40 @@
+#intro{
+	font-size:300%;
+	font-family: Verdana;
+	text-align:center;
+}
+#intro2{
+	font-size:50%;
+	font-family:Verdana;
+	text-align:center;
+}
+#newsFeed{
+	font-family: Verdana;
+	text-align:center;
+	border: 2px solid;
+	border-radius:25px;
+	margin-right: 20%;
+	margin-left:20%;
+	margin-top: 2%;
+	margin-bottom:2%;
+	padding: 25px;
+	background-color: #66FFFF;
+	box-shadow: 10px 10px 5px;
+}
+#main{
+	border: 2px solid;
+	margin-right: 20%;
+	margin-left:20%;
+	margin-top: 2%;
+	margin-bottom:2%;
+	padding: 25px;
+	text-align:center;
+}
+.interactive{
+	width:10em;
+	height:2em;
+}
+.giveup{
+	width:31em;
+	height:2em;
+}

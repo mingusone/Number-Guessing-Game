@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Number guessing game</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+	<link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+	<div>
+		<p id="intro">
+		GUESS THE NUMBER</br>
+	</p>
+	<p id="intro2">
+		and win nothing.
+	</p>
+	</div>
+<div id="newsFeed">
+Go on. Take a stab at it.
+</div>
+<div id="main">
+	<div id="guess">
+		<input class="interactive" type="text">
+	</div>
+	<div class="utility">
+		<button class="interactive" type="button" onclick="func()">Guess : 3</button>
+		<button class="interactive" type="button" onclick="func()">Hints : 3</button>
+		<button class="interactive" type="button" onclick="func()">Reset</button>
+	</div>
+	<div>
+		<button class="giveup" type="button" onclick="func()">Give up. (Don't do it)</button>
+	</div>
+</div>
+</body>
+
+<script>
+function func()
+{
+	document.getElementById("test").innerHTML = "Hello World";
+}
+</script>
+
+</html>
