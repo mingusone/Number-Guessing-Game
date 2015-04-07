@@ -2,14 +2,13 @@
 <html>
 <head>
 	<title>Number guessing game</title>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 	<link rel="stylesheet" href="style.css">
 
 </head>
 
 <body>
 	<div>
-		<p id="intro">
+	<p id="intro">
 		GUESS THE NUMBER</br>
 	</p>
 	<p id="intro2">
@@ -20,25 +19,25 @@
 Go on. Take a stab at it.
 </div>
 <div id="main">
-	<div id="guess">
-		<input class="interactive" type="text">
+	<div id="guessInput">
+		<input class="interactive" id="input" type="text">
 	</div>
 	<div class="utility">
-		<button class="interactive" type="button" onclick="func()">Guess : 3</button>
-		<button class="interactive" type="button" onclick="func()">Hints : 3</button>
-		<button class="interactive" type="button" onclick="func()">Reset</button>
+		<button class="interactive" id="guess" type="button">Guess : 3</button>
+		<button class="interactive" id="hint" type="button">Hints : 3</button>
+		<button class="interactive" type="button" id="reroll">Reroll</button>
 	</div>
 	<div>
-		<button class="giveup" type="button" onclick="func()">Give up. (Don't do it)</button>
+		<button class="giveup" type="button" id="giveup" onclick="func()">Give up. (Don't do it)</button>
+		<p>Rerolling changes the number a bit but gives you +1 hints and +1 guesses.</p>
 	</div>
 </div>
+
+<audio src="bgm_play.wav" loop autoplay></audio>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="main.js"></script>
 </body>
 
-<script>
-function func()
-{
-	document.getElementById("test").innerHTML = "Hello World";
-}
-</script>
 
 </html>
