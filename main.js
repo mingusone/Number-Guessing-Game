@@ -1,6 +1,16 @@
 var theNumber = 0;
 var guess = 3;
 var hint = 3;
+var guessed = [];
+
+var guessedBefore = function (foo){
+	for (var i = 0; i < guessed.length; i++) {
+		if(foo === guessed[i]){
+			return true;
+		}
+	};
+	return false;
+}
 
 var rollNumber = function(){
 	theNumber = Math.round((Math.random() * (100)) + 1);
@@ -25,16 +35,33 @@ var updateNewsFeed = function(text){
 	$("#newsFeed").text(text);
 };
 var winGame = function(){
-	updateNewsFeed("ZOMG YOU WON");
+	updateNewsFeed("VICTORY! Now guess what the next one is for double oxygen.");
 	resetGame();
 };
 
 //GUESS
-$("#guess").on('click', function(){
+$("#guess").on('click', guessCallback);
+$("#input").on('keypress', function(event){
+	var key = event.which;
+	if (key == 13){ // 13 is the keycode for enter
+		guessCallback();
+	}
+});
+
+//Separated this because there can be multiple ways to guess (press enter or click guess)
+var guessCallback = function(){
 	if (guess > 1){
 		var theGuess = parseInt($("#input").val(), 10);
-		debugger;
-		if (isNaN(theGuess)){ //typeof does not work here because typeof NaN === "number"
+		//Guessed before?
+		var duplicate = guessedBefore(theGuess);
+		if(duplicate === false){ // if it's a new guess, add it to the arr of guesses
+			guessed.push(theGuess);
+		}
+		if (duplicate === true){ //typeof does not work here because typeof NaN === "number"
+			updateNewsFeed("You've already guessed that.");
+		}
+		//other conditionals start here.
+		else if (isNaN(theGuess)){ //typeof does not work here because typeof NaN === "number"
 			updateNewsFeed("Numbers only please. Serious.");
 		}
 		else if (theGuess < 0 || theGuess > 100){
@@ -52,6 +79,7 @@ $("#guess").on('click', function(){
 		}
 		else{
 			winGame();
+			audio.play();
 		}		
 	}
 	else{
@@ -64,7 +92,7 @@ $("#guess").on('click', function(){
 		}
 	}
 
-});
+}
 
 //Hint
 $("#hint").on('click', function(){
@@ -72,7 +100,8 @@ $("#hint").on('click', function(){
 	var low = theNumber - hint - guess;
 	if (high > 100){high=100;}
 	if (low < 0){low=0;}
-	var theNews = ("The number is between "+high+" and "+low+". DEBUG->" + theNumber);
+	var theNews = ("The number is between "+high+" and "+low+".");
+	console.log(theNumber);
 	var theDissapointment = ("You have no hints left.");
 	if(hint > 0){
 		updateNewsFeed(theNews);
@@ -94,6 +123,7 @@ $("#reroll").on('click', function(){
 	if(guess < 3){
 		guess++;
 	}
+	updateNewsFeed("New number is old number plus or minus three.");
 	updateBtns();
 });
 
@@ -106,3 +136,14 @@ $("#giveup").on('click', function(){
 
 //LET THE GAMES BEGIN
 $(document).ready(rollNumber);
+var audio = document.getElementById("audio");
+audio.volume = 0.5;
+
+
+
+
+
+
+
+
+
